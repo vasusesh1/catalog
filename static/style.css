@@ -1,0 +1,55 @@
+
+/* CSS and Bootstrap : W3Schools
+https://www.w3schools.com/css/
+https://www.w3schools.com/bootstrap/default.asp
+*/
+
+body {
+	background-color: white;
+}
+
+a {
+	color: red;
+}
+
+ul{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+h3 {
+	margin-top: 0px;
+}
+
+nav {
+	margin: 0;
+	width: 100%;
+}
+
+.btn {
+	border-radius: 0px;
+}
+
+.img-thumbnail {
+	margin-top: 1rem;
+}
+
+.name {
+	padding: 0;
+}
+
+
+.navbar-profile-image {
+	height: 40px;
+	padding-bottom: 15px;
+}
+
+.navbar-brand {
+	text-transform: uppercase;
+	font-size: 2.5rem;
+
+}

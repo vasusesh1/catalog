@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="newitem">
+	<div class="row banner menu">
+		<div class="col-md-14 padding-none">
+			<h1>New Chocolate</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-14 padding-top">
+			<form method = "post">
+				<div class="form-group">
+					<label for="name">Chocolate</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" >
+					<label for="description">Description</label>
+					<textarea class="form-control" maxlength="500" rows="4" name="description" ></textarea>
+
+					
+					{% include "catalog_category.html" %}
+				    <div style="margin-top: 3rem">
+					<button type="submit" class="btn btn-success" id="submit" type="submit">
+					<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Add</button>
+					<button class="btn btn-default delete">
+						<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> 
+						<a href = "{{ url_for('showCatalog') }}">
+							Cancel
+						</a>
+					</button>
+				</div>
+			</form>
+		  </div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+
+<div class="jumbotron" style="background-color: #99CCFF">
+  <h2 align="center">CHOCOLATE CATALOG</h2>
+</div>
+
+
+<nav class="navbar navbar-light" style="background-color: chocolate;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span style="color:white">Options</span>
+      </button>
+      <a class="navbar"><span style="color:white" align="center">Rich and Creamy Chocolates</span></a>
+    </div>
+   <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        {%if 'username' not in session %}
+          <li><a href="{{url_for('showLogin')}}">Dive In</a></li>
+        {% else %}
+          {% if session.user_id %}
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url_for('showCatalog') }}">Display</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{{url_for('disconnect')}}">Logout</a></li>
+              </ul>
+            </li>
+          {% endif %}
+        {% endif %} 
+      </ul>
+    </div>
+  </div>
+</nav>

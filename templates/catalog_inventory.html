@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "flash.html" %}
+{% include "categoryBlock.html" %}
+<div class="col-md-9">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Chocolate Inventory..</h2>
+		</div>
+	</div>
+	{% include "catalogList.html" %}
+</div>
+{% endblock %}}

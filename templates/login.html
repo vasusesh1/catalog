@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="alert alert-info">
+    <div id="result"></div>
+    <h2>Can you sign in for us real quick?</h2>
+    <div id="signInButton">
+      <span class="g-signin"
+        data-scope="openid email"
+        data-clientid="393503797552-u0nno7io433k6308tfs19j0djoi0db9h.apps.googleusercontent.com"
+        data-redirecturi="postmessage"
+        data-accesstype="offline"
+        data-cookiepolicy="single_host_origin"
+        data-callback="signInCallback"
+        data-approvalprompt="force">
+      </span>
+    </div>
+    <script>
+        function signInCallback(authResult) {
+        if (authResult['code']) {
+            $('#signinButton').attr('style', 'display: none');
+            //After the user has been authorized, the sign in button is no longer required.
+            //After the server responds successfully, notify the user that login has gone through and then redirect to the main application web page, so the user 
+            //can start adding categories and items.
+            $.ajax({
+                type: 'POST',
+                url: '/gconnect?state={{STATE}}',
+                processData: false,
+                data: authResult['code'],
+                contentType: 'application/octet-stream; charset=utf-8',
+                success: function(result) {
+                    if (result) {
+                        $('#result').html('Success!</br>'+ result + '</br>You will be redirected now...')
+                        setTimeout(function() {
+                        window.location.href = "/categories/";
+                        }, 4000);
+                        
+                    } else if (authResult['error']) {
+                        console.log('Oops, something went wrong: ' + authResult['error']);
+                    } else {
+                        $('#result').html('Uh-oh, it snapped! Check your confguration');
+                    }
+                }    
+        }); } }
+    </script>
+   
+</div>
+{% endblock %}
